@@ -2,12 +2,12 @@ version: '2'
 services:
   data_api:
     build: .
-    image: data_api
-    container_name: data_api_dev
+    image: data_collect
+    container_name: data_collect
     ports:
       - "8030:8030"
     volumes:
-      - ./collect_data_api/:/app/
+      - ./:/app/
     command: python manage.py runserver 0.0.0.0:8030
     depends_on:
       - db
@@ -16,11 +16,11 @@ services:
     volumes:
       - postgres_data:/var/lib/postgresql/data
     env_file:
-      - ./
-    environment:
-      - POSTGRES_USER=USER_DEV
-      - POSTGRES_PASSWORD=Kjfu55mm!0Na
-      - POSTGRES_DB=DATA_API_DEV
+      - ./collect_api/secrets/.env_db
+    # environment:
+    #   - POSTGRES_USER=USER_DEV
+    #   - POSTGRES_PASSWORD=Kjfu55mm!0Na
+    #   - POSTGRES_DB=DATA_API_DEV
 volumes:
   postgres_data:
 
