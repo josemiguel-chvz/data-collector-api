@@ -44,6 +44,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 ]
 
+LOGIN_REDIRECT_URL = "/"
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -59,7 +61,7 @@ ROOT_URLCONF = 'collect_api.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR / "app/templates"],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
